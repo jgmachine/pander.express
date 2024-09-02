@@ -69,22 +69,6 @@ canvas {
     margin: 0 10px;
 }
 
-body {
-    margin: 0;
-    overflow: hidden;
-}
-
 #logo {
     user-select: none; /* Prevent text selection */
-}
-
-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none; /* Ensure clicks pass through to body */
-}
-
-.active-state {
-    background-color: black; /* Or your desired active state style */
 }
