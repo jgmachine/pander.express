@@ -1,3 +1,28 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+    const logo = document.getElementById('logo');
+    let effectsActive = false;  // State to track whether effects are active
+
+    logo.addEventListener('click', function() {
+        if (!effectsActive) {
+            body.classList.remove('initial-state');
+            body.classList.add('active-state');
+            startEffects();  // Function to start particle effects and pulsing
+            effectsActive = true;
+        }
+    });
+
+    function startEffects() {
+        // Start particle system
+        initParticles();
+        // Start pulsing logo
+        logo.classList.add('pulsing');
+    }
+
+    function initParticles() {
+        
+
+
 // interactive.js
 document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.createElement('canvas');
@@ -58,4 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     init();
+});
+    }
 });
