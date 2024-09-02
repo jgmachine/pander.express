@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add a new emoji particle
     function addEmojiParticle(x, y) {
+        if (!effectsActive) return; // Prevent emoji particles if effects are off
         const emoji = emojis[Math.floor(Math.random() * emojis.length)];
         const size = Math.random() * 24 + 16; // Random size for emojis
         const speedX = Math.random() * 4 - 2; // Random speed X
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle clicks on the canvas to create emoji particles
     canvas.addEventListener('click', function(event) {
+        if (!effectsActive) return; // Prevent emoji particles if effects are off
         const rect = canvas.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
@@ -75,7 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
             body.classList.remove('active-state');
             logo.classList.remove('pulsing');
             ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear both types of particles
-            emojiParticles = []; // Clear only emoji particles
+            particles = []; // Clear regular particles
+            emojiParticles = []; // Clear emoji particles
         }
     });
 
