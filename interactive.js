@@ -2,39 +2,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const body = document.body;
     const logo = document.getElementById('logo');
     const canvas = document.createElement('canvas');
-    canvas.style.zIndex = 0; // Ensure the canvas is behind other elements
-    body.insertBefore(canvas, body.firstChild); // Ensure canvas is at the back
+    body.insertBefore(canvas, body.firstChild); // Make sure canvas is at the back
     const ctx = canvas.getContext('2d');
+    let effectsActive = false; // Control flag for toggling effects
 
-    let effectsActive = false; // State to track whether effects are active
-
+    // Ensure the canvas fills the screen and responds to resizing
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
-
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    function toggleEffects() {
-        if (!effectsActive) {
+    // Toggling effects on and off
+    logo.addEventListener('click', function() {
+        effectsActive = !effectsActive; // Toggle the state
+        if (effectsActive) {
             body.classList.add('active-state');
             logo.classList.add('pulsing');
             initParticles();
-            effectsActive = true;
         } else {
             body.classList.remove('active-state');
             logo.classList.remove('pulsing');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            effectsActive = false;
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the particle effects
         }
-    }
+    });
 
-    logo.addEventListener('click', toggleEffects);
-
+    // Initialize and animate particles
     function initParticles() {
-        const particles = [];
         const numParticles = 200;
+        const particles = [];
         const colors = ['#ff0051', '#f56762', '#a53c6c', '#f19fa0', '#72bdbf', '#47689b'];
 
         class Particle {
@@ -62,6 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        // Create all particles
+        for (let i = 0; i < numParticles; i++) {
+            particles.push(new Particle());
+        }
+
+        // Animation loop for particles
         function animate() {
             if (!effectsActive) return; // Stop animation when effects are off
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -72,9 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
             requestAnimationFrame(animate);
         }
 
-        for (let i = 0; i < numParticles; i++) {
-            particles.push(new Particle());
-        }
         animate();
     }
 });
