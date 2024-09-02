@@ -14,9 +14,9 @@
             margin: 0;
             flex-direction: column; /* Arrange items vertically */
         }
-        img.logo, img.social-icon {
-            max-width: 100%;
-            height: auto;
+        img.logo {
+            width: 300px; /* Fixed width for logo */
+            height: 300px; /* Fixed height for logo */
             display: block; /* Center the images */
             margin: 20px 0; /* Adds space around the images */
         }
@@ -24,10 +24,15 @@
             display: flex;
             justify-content: center; /* Center the social icons horizontally */
         }
+        img.social-icon {
+            width: 50px; /* Fixed width for social icons */
+            height: 50px; /* Fixed height for social icons */
+            margin: 0 10px; /* Space between icons */
+        }
     </style>
 </head>
 <body>
-    <img src="panderexpress.jpeg" alt="Pander Express Logo" class="logo">
+    <img src="panderexpress.png" alt="Pander Express Logo" class="logo">
     <div class="social-icons">
         <a href="https://facebook.com/yourpage" target="_blank">
             <img src="facebook.png" alt="Facebook" class="social-icon">
