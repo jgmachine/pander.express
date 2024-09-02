@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const body = document.body;
     const logo = document.getElementById('logo');
     const canvas = document.createElement('canvas');
-    body.insertBefore(canvas, body.firstChild); // Make sure canvas is at the back
+    body.insertBefore(canvas, body.firstChild); // Ensure canvas is at the back
     const ctx = canvas.getContext('2d');
     let effectsActive = false; // Control flag for toggling effects
 
@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.size = Math.random() * 5 + 1;
-                this.speedX = Math.random() * 2 - 1;
-                this.speedY = Math.random() * 2 - 1;
+                this.speedX = (Math.random() * 4 - 2); // Increased horizontal speed
+                this.speedY = (Math.random() * 4 - 2); // Increased vertical speed
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
 
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.x += this.speedX;
                 this.y += this.speedY;
                 if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                if (this.y < 0 or this.y > canvas.height) this.speedY *= -1;
             }
 
             draw() {
