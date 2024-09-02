@@ -12,15 +12,29 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column; /* Arrange items vertically */
         }
-        img.logo {
+        img.logo, img.social-icon {
             max-width: 100%;
             height: auto;
-            display: block; /* Center the image */
+            display: block; /* Center the images */
+            margin: 20px 0; /* Adds space around the images */
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center; /* Center the social icons horizontally */
         }
     </style>
 </head>
 <body>
-    <img src="panderexpress.JPEG" alt="Pander Express Logo" class="logo">
+    <img src="panderexpress.png" alt="Pander Express Logo" class="logo">
+    <div class="social-icons">
+        <a href="https://facebook.com/yourpage" target="_blank">
+            <img src="facebook.png" alt="Facebook" class="social-icon">
+        </a>
+        <a href="https://instagram.com/yourprofile" target="_blank">
+            <img src="instagram.png" alt="Instagram" class="social-icon">
+        </a>
+    </div>
 </body>
 </html>
