@@ -36,18 +36,20 @@ document.addEventListener('DOMContentLoaded', function() {
         addEmojiParticle(x, y);
     });
 
-    // Prevent text selection and default actions
-    document.body.style.userSelect = 'none'; // Disable text selection globally
-    document.body.style.webkitUserSelect = 'none'; // Disable text selection on Webkit browsers
-
     // Function to update and draw particles
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         // Draw regular particles
         particles.forEach(particle => {
-            particle.update();
-            particle.draw();
+            particle.x += particle.speedX;
+            particle.y += particle.speedY;
+            if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
+            if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+            ctx.fillStyle = particle.color;
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.size, 0, 2 * Math.PI);
+            ctx.fill();
         });
 
         // Draw emoji particles
@@ -57,8 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
             if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
             ctx.font = `${particle.size}px Arial`;
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
             ctx.fillText(particle.emoji, particle.x, particle.y);
         });
 
@@ -67,8 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     animate();
 
     // Function to handle logo click specifically
-    logo.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default click behavior
+    logo.addEventListener('click', function() {
         effectsActive = !effectsActive;
         if (effectsActive) {
             body.classList.add('active-state');
