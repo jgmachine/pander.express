@@ -1,43 +1,15 @@
-body {
+/* styles.css */
+body, html {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
     overflow: hidden;
-    background-color: white; /* Default white background */
+    background-color: white; /* Default background */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: relative;
-    transition: background-color 0.5s; /* Smooth transition for background color */
-}
-
-.active-state {
-    background-color: black; /* Toggle to black background */
-}
-
-.logo-container {
-    cursor: pointer; /* Make the logo clickable */
-}
-
-.logo {
-    width: 300px;
-    height: 300px;
-    margin: 20px 0;
-    transition: transform 2s ease-in-out; /* Pulse effect */
-}
-
-.pulsing {
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1); /* Normal size */
-    }
-    50% {
-        transform: scale(1.1); /* Slightly larger */
-    }
+    transition: background-color 0.5s; /* Smooth transition for background */
 }
 
 canvas {
@@ -46,12 +18,41 @@ canvas {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Ensure it's behind all other content */
+    z-index: 0; /* Behind all other content */
+}
+
+.logo-container {
+    cursor: pointer;
+    z-index: 2; /* Ensure it's above the canvas */
+}
+
+.logo {
+    width: 300px;
+    height: 300px;
+    transition: transform 2s ease-in-out;
+}
+
+.pulsing {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .social-icons {
     display: flex;
     justify-content: center;
-    position: relative;
-    z-index: 2; /* Higher z-index to ensure visibility and interactivity */
+    z-index: 2; /* Ensure social icons are visible and clickable */
+}
+
+.social-icon {
+    width: 50px; /* Ensure social icons have a fixed size */
+    height: 50px;
+    margin: 0 10px;
 }
