@@ -1,8 +1,9 @@
-body, html {
+html, body {
+    width: 100%;  /* Ensure full width */
+    height: 100%; /* Ensure full height */
     margin: 0;
     padding: 0;
-    height: 100vh; /* Full viewport height */
-    overflow: hidden;
+    overflow: hidden; /* Prevents scrolling */
     background-color: white; /* Default background */
     display: flex;
     justify-content: center;
@@ -11,7 +12,7 @@ body, html {
     transition: background-color 0.5s; /* Smooth transition for background */
 }
 
-.active-state {
+body.active-state {
     background-color: black; /* Toggle to black background */
 }
 
@@ -22,8 +23,6 @@ body, html {
 }
 
 .logo {
-    width: 100px; /* Default smaller size */
-    height: 100px;
     transition: transform 2s ease-in-out;
     transform-origin: center; /* Ensures pulsing happens centrally */
 }
