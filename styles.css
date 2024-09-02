@@ -1,4 +1,13 @@
 /* styles.css */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1); /* Logo at normal size */
+  }
+  50% {
+    transform: scale(1.1); /* Logo scales up by 10% */
+  }
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -21,22 +30,22 @@ canvas {
     height: 100%;
     z-index: 1; /* Lower z-index so it stays behind interactive elements */
 }
-img.logo, img.social-icon {
-    z-index: 2; /* Higher z-index to ensure visibility and interactivity */
-}
-.social-icons {
-    display: flex;
-    justify-content: center;
-    position: relative; /* Ensures proper z-index behavior */
-    z-index: 3; /* Ensures this container is above the particles */
-}
 img.logo {
     width: 300px;
     height: 300px;
     margin: 20px 0;
+    z-index: 2; /* Ensure logo is above canvas */
+    animation: pulse 2s infinite; /* Apply the pulse animation */
 }
 img.social-icon {
+    z-index: 3; /* Higher z-index to ensure interactivity */
     width: 50px;
     height: 50px;
     margin: 0 10px;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
 }
