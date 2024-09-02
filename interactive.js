@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.createElement('canvas');
-    document.body.insertBefore(canvas, document.body.firstChild);
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    document.body.appendChild(canvas); // Ensure canvas is in the body
     const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas, false);
+    resizeCanvas(); // Set initial size
 
     let particles = [];
     const numParticles = 100;
@@ -48,20 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         requestAnimationFrame(animate);
     }
-
-    window.addEventListener('mousemove', function(e) {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        particles.forEach(p => {
-            const dx = p.x - mouseX;
-            const dy = p.y - mouseY;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 50) {
-                p.vx += dx / dist;
-                p.vy += dy / dist;
-            }
-        });
-    });
 
     init();
 });
