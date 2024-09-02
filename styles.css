@@ -23,7 +23,7 @@ body.active-state {
 }
 
 .logo {
-    width: clamp(100px, 20vw, 300px); /* Adjusts dynamically between 100px and 300px */
+    width: clamp(150px, 25vw, 350px); /* Adjusts dynamically between 150px and 350px */
     height: auto; /* Maintains the aspect ratio of the logo */
     transition: transform 2s ease-in-out;
     transform-origin: center; /* Center the transformation origin */
@@ -44,10 +44,10 @@ body.active-state {
 
 @media (min-width: 768px) { /* Adjustments for larger screens */
     .logo {
-        width: 300px; /* Larger size on desktop */
-        height: 300px;
+        width: clamp(250px, 30vw, 400px); /* Larger size range for desktop */
     }
 }
+
 
 canvas {
     position: absolute;
