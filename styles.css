@@ -23,8 +23,10 @@ body.active-state {
 }
 
 .logo {
+    width: clamp(100px, 20vw, 300px); /* Adjusts dynamically between 100px and 300px */
+    height: auto; /* Maintains the aspect ratio of the logo */
     transition: transform 2s ease-in-out;
-    transform-origin: center; /* Ensures pulsing happens centrally */
+    transform-origin: center; /* Center the transformation origin */
 }
 
 .pulsing {
@@ -36,7 +38,7 @@ body.active-state {
         transform: scale(1);
     }
     50% {
-        transform: scale(1.2); /* Moderate scaling to prevent clipping */
+        transform: scale(1.05); /* Slightly larger scale to prevent clipping */
     }
 }
 
