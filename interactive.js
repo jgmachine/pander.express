@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let effectsActive = false; // Control flag for toggling effects
     let particles = [];
     let emojiParticles = [];
-    const emojis = ["😀", "🎉", "🎸", "🐼", "🔥", "🌟"]; // Array of emojis to use as particles
+    const emojis = ["😀", "🎉", "🎸", "🐼", "🔥", "🌟", "💩", "🙈", "🤘"]; // Array of emojis to use as particles
 
     // Ensure canvas fills the screen and responds to resizing
     function resizeCanvas() {
@@ -67,7 +67,8 @@ document.addEventListener('DOMContentLoaded', function() {
     animate();
 
     // Function to handle logo click specifically
-    logo.addEventListener('click', function() {
+    logo.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default click behavior
         effectsActive = !effectsActive;
         if (effectsActive) {
             body.classList.add('active-state');
