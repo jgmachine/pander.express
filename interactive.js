@@ -1,6 +1,7 @@
+// interactive.js
 document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.createElement('canvas');
-    document.body.appendChild(canvas); // Ensure canvas is in the body
+    document.body.appendChild(canvas);
     const ctx = canvas.getContext('2d');
 
     function resizeCanvas() {
@@ -9,32 +10,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     window.addEventListener('resize', resizeCanvas, false);
-    resizeCanvas(); // Set initial size
+    resizeCanvas();
 
     let particles = [];
-    const numParticles = 100;
-    const particleSize = 5;
-    const maxSpeed = 2;
+    const numParticles = 200;
+    const colors = ['#ff0051', '#f56762', '#a53c6c', '#f19fa0', '#72bdbf', '#47689b']; // Bright neon colors
 
     class Particle {
         constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.vx = Math.random() * maxSpeed * 2 - maxSpeed;
-            this.vy = Math.random() * maxSpeed * 2 - maxSpeed;
+            this.x = canvas.width * Math.random();
+            this.y = canvas.height * Math.random();
+            this.size = Math.random() * 5 + 1;
+            this.speedX = Math.random() * 3 - 1.5;
+            this.speedY = Math.random() * 3 - 1.5;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
         }
 
         update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-            if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+            if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
         }
 
         draw() {
-            ctx.fillStyle = 'rgba(0, 150, 255, 0.7)';
+            ctx.fillStyle = this.color;
             ctx.beginPath();
-            ctx.arc(this.x, this.y, particleSize, 0, Math.PI * 2);
+            ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
             ctx.fill();
         }
     }
@@ -48,9 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            p.update();
-            p.draw();
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
         });
         requestAnimationFrame(animate);
     }
