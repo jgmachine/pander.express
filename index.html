@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pander Express</title>
+    <link rel="icon" type="image/png" href="icon.png">
     <style>
         body {
             background-color: white;
@@ -13,21 +14,16 @@
             height: 100vh;
             margin: 0;
             flex-direction: column; /* Arrange items vertically */
-            overflow: hidden; /* Hide overflow to keep particles within the viewport */
         }
         img.logo {
             width: 300px; /* Fixed width for logo */
             height: 300px; /* Fixed height for logo */
             display: block; /* Center the images */
             margin: 20px 0; /* Adds space around the images */
-            z-index: 10; /* Ensures logo is above the interactive background */
-            position: relative;
         }
         .social-icons {
             display: flex;
             justify-content: center; /* Center the social icons horizontally */
-            z-index: 10; /* Ensures social icons are above the interactive background */
-            position: relative;
         }
         img.social-icon {
             width: 50px; /* Fixed width for social icons */
