@@ -23,7 +23,7 @@ body.active-state {
 }
 
 .logo {
-    width: clamp(200px, 30vw, 450px); /* Adjusts dynamically between 200px and 450px */
+    width: clamp(250px, 40vw, 600px); /* Adjusts dynamically between 250px and 600px */
     height: auto; /* Maintains the aspect ratio of the logo */
     transition: transform 2s ease-in-out;
     transform-origin: center; /* Center the transformation origin */
@@ -38,13 +38,13 @@ body.active-state {
         transform: scale(1);
     }
     50% {
-        transform: scale(1.05); /* Slightly larger scale to prevent clipping */
+        transform: scale(1.1); /* Slightly larger scale to enhance the pulsing effect */
     }
 }
 
 @media (min-width: 768px) { /* Adjustments for larger screens */
     .logo {
-        width: clamp(300px, 35vw, 500px); /* Larger size range for desktop */
+        width: clamp(350px, 45vw, 700px); /* Even larger size range for desktop */
     }
 }
 
