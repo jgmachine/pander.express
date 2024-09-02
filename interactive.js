@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     body.insertBefore(canvas, body.firstChild); // Make sure canvas is at the back
     const ctx = canvas.getContext('2d');
     let effectsActive = false; // Control flag for toggling effects
+    let mouseX = 0, mouseY = 0; // Mouse position variables
 
     // Ensure the canvas fills the screen and responds to resizing
     function resizeCanvas() {
@@ -13,6 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
+
+    canvas.addEventListener('mousemove', function(event) {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = event.clientX - rect.left;
+        mouseY = event.clientY - rect.top;
+    });
 
     // Toggling effects on and off
     logo.addEventListener('click', function() {
@@ -28,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Initialize and animate particles
+    // Initialize and animate particles and light rays
     function initParticles() {
         const numParticles = 200;
         const particles = [];
@@ -39,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.size = Math.random() * 5 + 1;
-                this.speedX = Math.random() * 4 - 2;
+                this.speedX = Math.random() * 4 - 2; // Increased speed for more dynamic movement
                 this.speedY = Math.random() * 4 - 2;
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
@@ -64,10 +71,11 @@ document.addEventListener('DOMContentLoaded', function() {
             particles.push(new Particle());
         }
 
-        // Animation loop for particles
+        // Animation loop for particles and light rays
         function animate() {
             if (!effectsActive) return; // Stop animation when effects are off
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawRays(); // Draw light rays
             particles.forEach(particle => {
                 particle.update();
                 particle.draw();
@@ -76,5 +84,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         animate();
+    }
+
+    // Function to draw light rays based on mouse position
+    function drawRays() {
+        let logoCenterX = canvas.width / 2;
+        let logoCenterY = canvas.height / 2;
+        ctx.beginPath();
+        ctx.moveTo(logoCenterX, logoCenterY);
+        ctx.lineTo(mouseX, mouseY);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - Math.sqrt(Math.pow(mouseX - logoCenterX, 2) + Math.pow(mouseY - logoCenterY, 2)) / canvas.width})`;
+        ctx.stroke();
     }
 });
