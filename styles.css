@@ -1,4 +1,22 @@
 /* styles.css */
+body.initial-state {
+    background-color: white;
+}
+
+body.active-state {
+    background-color: black;
+    animation: fadeBackground 1s forwards;
+}
+
+@keyframes fadeBackground {
+    from { background-color: white; }
+    to { background-color: black; }
+}
+
+.logo-container {
+    cursor: pointer; /* Make the logo clickable */
+}
+
 @keyframes pulse {
   0%, 100% {
     transform: scale(1); /* Logo at normal size */
