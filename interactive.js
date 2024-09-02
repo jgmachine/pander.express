@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let effectsActive = false; // Control flag for toggling effects
     let particles = [];
     let emojiParticles = [];
-    const emojis = ["😀", "🎉", "🎸", "🐼", "🔥", "🌟"]; // Array of emojis to use as particles
+    const emojis = ["😀", "🎉", "🎸", "🐼", "🔥", "🌟", "💩", "🙈", "🤘"]; // Array of emojis to use as particles
 
     // Ensure canvas fills the screen and responds to resizing
     function resizeCanvas() {
