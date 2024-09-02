@@ -1,0 +1,41 @@
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Arrange items vertically */
+    position: relative; /* Needed for correct z-index functioning */
+}
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Ensures that the canvas is behind everything */
+}
+img.logo, img.social-icon {
+    z-index: 1; /* Ensures these elements are above the canvas */
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    position: relative; /* This makes sure it's positioned above the canvas */
+}
+img.logo {
+    width: 300px;
+    height: 300px;
+    margin: 20px 0;
+}
+img.social-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+}
